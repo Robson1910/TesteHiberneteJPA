@@ -6,38 +6,45 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ *  Class Main
+ */
 public class Main {
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
 
-        contatos contatos = new contatos(18,"Luana lino","3333-5555","luana@teste.com.br");
+        contatos create = new contatos(null,"Jose lino","9999-9999","teste@teste.com.br");
+        contatos update = new contatos(1,"Luana lino","3333-5555","luana@teste.com.br");
 
         // Cria a conexão do banco chamando persistence.xml
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
         EntityManager em = emf.createEntityManager();
 
-        // Salvar no banco de dados
+        // Create
         /*
          em.getTransaction().begin();
-         em.persist(contatos);
+         em.persist(create);
          em.getTransaction().commit();
         */
 
-        // Buscar do banco de dados pelo ID
+        // Get
         /*
           contatos con = em.find(contatos.class,1);
           System.out.println(con);
          */
 
-        // alterar no banco de dados
+        // Update
         /*
            em.getTransaction().begin();
-           em.merge(contatos);
+           em.merge(update);
            em.getTransaction().commit();
          */
 
-        // remover no banco de dados
+        // Delete
         /*
-           contatos con = em.find(contatos.class,18);
+           contatos con = em.find(contatos.class,1);
            em.getTransaction().begin();
            em.remove(con);
            em.getTransaction().commit();
